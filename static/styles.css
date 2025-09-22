@@ -1,0 +1,119 @@
+/* ==========================
+   Estilos generales
+========================== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #0b0c10;
+  color: #c5c6c7;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  color: #66fcf1;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+table th, table td {
+  border: 1px solid #45a29e;
+  padding: 8px;
+  text-align: center;
+}
+
+table th {
+  background-color: #1f2833;
+  color: #66fcf1;
+}
+
+table tr:nth-child(even) {
+  background-color: #1f2833;
+}
+
+table tr:nth-child(odd) {
+  background-color: #0b0c10;
+}
+
+/* ==========================
+   Juegos por semana
+========================== */
+details {
+  margin: 10px 0;
+  padding: 5px;
+  background-color: #1f2833;
+  border-radius: 5px;
+}
+
+details[open] {
+  background-color: #0b0c10;
+  border: 1px solid #66fcf1;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px;
+  list-style: none;
+  color: inherit; /* Mantiene el color original del texto */
+}
+
+/* Solo triángulos en amarillo */
+details summary::-webkit-details-marker {
+  color: yellow; /* Chrome/Safari */
+}
+
+details summary::marker {
+  color: yellow; /* Firefox */
+}
+
+/* ==========================
+   Filtros
+========================== */
+select {
+  background-color: #1f2833;
+  color: #66fcf1;
+  border: 1px solid #45a29e;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+select option {
+  background-color: #0b0c10;
+  color: #c5c6c7;
+}
+
+/* ==========================
+   Otros elementos
+========================== */
+button {
+  background-color: #45a29e;
+  color: #0b0c10;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #66fcf1;
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: #c5c6c7;
+  font-size: 14px;
+}
