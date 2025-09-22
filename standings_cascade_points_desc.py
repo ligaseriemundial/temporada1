@@ -114,8 +114,9 @@ FETCH_ALIASES = {
 # ===== Ajustes algebraicos por equipo (resets W/L) =====
 TEAM_RECORD_ADJUSTMENTS = {
 "Astros": (-1, 0),
-"Rays": (0,-2),
+"Rays": (0,-3),
 "Padres": (-1,0),
+    "Yankees": (-1,0),
 
 }
 
@@ -479,6 +480,7 @@ def games_played_today_scl():
 
 
 # ====== FIN DEL BLOQUE ======
+
 
 
 
