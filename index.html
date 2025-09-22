@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liga Serie Mundial - MLB The Show 25</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0b0f29, #121a3a);
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    header {
+      margin-bottom: 40px;
+      animation: fadeIn 2s ease-in-out;
+    }
+    header h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      color: #e63946;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    header h2 {
+      font-size: 1.3rem;
+      color: #f1faee;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+    nav {
+      display: grid;
+      gap: 20px;
+      width: 90%;
+      max-width: 500px;
+    }
+    a {
+      display: block;
+      padding: 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      background: #1d3557;
+      color: #f1faee;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+    a:hover {
+      background: #457b9d;
+      transform: scale(1.05);
+    }
+    a.inactive {
+      background: #333;
+      color: #aaa;
+      cursor: not-allowed;
+    }
+    footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>⚾ Liga Serie Mundial</h1>
+    <h2>Custom Leagues - MLB The Show 25</h2>
+  </header>
+
+  <nav>
+    <a href="#" class="inactive">1️⃣ Sorteos y Draft (En construcción)</a>
+    <a href="#" class="inactive">2️⃣ Reglas (En construcción)</a>
+    <a href="https://liga-serie-mundial.onrender.com/" target="_blank">3️⃣ Tabla de posiciones y Resultados Diarios</a>
+    <a href="#" class="inactive">4️⃣ Otras Estadísticas (En construcción)</a>
+  </nav>
+
+  <footer>
+    🚧 Sitio en desarrollo • Muy pronto más secciones disponibles
+  </footer>
+</body>
+</html>
