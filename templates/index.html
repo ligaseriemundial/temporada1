@@ -61,19 +61,6 @@
       <h2>📅 Juegos jugados hoy</h2>
       <ul id="games-today-list" class="games-list"></ul>
     </section>
-
-    <!-- ===================== -->
-    <!-- JUEGOS POR SEMANA -->
-    <!-- ===================== -->
-    <section id="weekly-section" class="hidden">
-      <h2>📅 Juegos por semana</h2>
-
-      <label for="weekly-filter">Filtrar por equipo:</label>
-      <select id="weekly-filter"></select>
-
-      <div id="weekly-container"></div>
-    </section>
-
   </div>
 
   <script>
@@ -88,107 +75,6 @@
     };
     const show = x => x.classList.remove('hidden');
     const hide = x => x.classList.add('hidden');
-
-    
-    function renderWeekly(data){
-      const weekly = data.semanas;
-      const current = data.semana_actual;
-      const cont = document.getElementById('weekly-container');
-      const filter = document.getElementById('weekly-filter');
-      cont.innerHTML = '';
-      filter.innerHTML = '';
-
-      if (!weekly || !current) return;
-
-      // Build unique team list for filter
-      const teamsSet = new Set();
-      Object.values(weekly).forEach(arr => {
-        arr.forEach(j => { teamsSet.add(j.local); teamsSet.add(j.visitante); });
-      });
-      const teams = Array.from(teamsSet).sort();
-      const mkOpt = (val, text) => { const o = document.createElement('option'); o.value = val; o.textContent = text; return o; };
-      filter.appendChild(mkOpt('Todos','Todos'));
-      teams.forEach(t => filter.appendChild(mkOpt(t, t)));
-
-      const createWeekBlock = (weekNum, juegos) => {
-        // Group by series key "local vs visitante"
-        const groups = {};
-        juegos.forEach((j, idx) => {
-          const key = j.local + ' vs ' + j.visitante;
-          if (!groups[key]) groups[key] = [];
-          groups[key].push({idx: idx+1, ...j});
-        });
-
-        const details = document.createElement('details');
-        if (String(weekNum) === String(current)) details.open = true;
-        const summary = document.createElement('summary');
-        summary.textContent = 'Semana ' + weekNum + (String(weekNum) === String(current) ? ' (ACTUAL)' : '');
-        details.appendChild(summary);
-
-        Object.entries(groups).forEach(([serie, juegosSerie]) => {
-          const title = document.createElement('h3');
-          title.className = 'titulo-serie';
-          title.textContent = 'Serie: ' + serie;
-          details.appendChild(title);
-
-          const ul = document.createElement('ul');
-          ul.className = 'serie-lista';
-
-          juegosSerie.forEach(j => {
-            const li = document.createElement('li');
-            li.className = 'juego-linea ' + ('estado-' + (j.estado||'').toLowerCase());
-            const result = j.resultado && j.resultado.trim() !== '' ? j.resultado : '-';
-            li.textContent = `Juego ${j.idx} — ${j.local} vs ${j.visitante} — ${result} (${j.estado})`;
-            ul.appendChild(li);
-          });
-
-          details.appendChild(ul);
-        });
-
-        return details;
-      };
-
-      Object.entries(weekly).forEach(([week, juegos]) => {
-        cont.appendChild(createWeekBlock(week, juegos));
-      });
-
-      function applyWeeklyFilter(){
-        const sel = filter.value;
-        const lines = cont.querySelectorAll('.juego-linea, .titulo-serie');
-        if (sel === 'Todos') {
-          lines.forEach(x => x.style.display = '');
-          return;
-        }
-        // Hide everything, show only series/items containing team
-        lines.forEach(x => x.style.display = 'none');
-        cont.querySelectorAll('details').forEach(det => {
-          // For each series title + its lis, decide visibility
-          const blocks = det.querySelectorAll('.titulo-serie');
-          blocks.forEach(title => {
-            const serieText = title.textContent || '';
-            const ul = title.nextElementSibling;
-            let any = false;
-            ul.querySelectorAll('.juego-linea').forEach(li => {
-              if (li.textContent.includes(sel)) {
-                li.style.display = '';
-                any = true
-              } else {
-                li.style.display = 'none';
-              }
-            });
-            if (serieText.includes(sel) || any) {
-              title.style.display = '';
-              ul.style.display = '';
-            } else {
-              title.style.display = 'none';
-              ul.style.display = 'none';
-            }
-          });
-        });
-      }
-      filter.onchange = applyWeeklyFilter;
-      show(document.getElementById('weekly-section'));
-    }
 
     function parseGameString(s){
       // Convierte "Mets 3 - Mariners 0 - 07-09-2025 - 6:30 pm (hora Chile)"
@@ -251,7 +137,7 @@
         });
         show(el.standingsSection);
 
-        // Juegos de hoy (acepta strings u objetos)
+        // Juegos de hoy
         el.gamesList.innerHTML = '';
         const games = data.games_today || [];
         if (games.length === 0) {
@@ -274,12 +160,6 @@
         }
         show(el.gamesSection);
 
-        // Render weekly block if present
-        if (data.semanas && data.semana_actual) {
-          renderWeekly(data);
-        }
-
-
       }catch(e){
         el.error.textContent = 'No se pudieron cargar los datos: ' + e.message;
         show(el.error);
@@ -292,6 +172,3 @@
   </script>
 </body>
 </html>
-
-
-
