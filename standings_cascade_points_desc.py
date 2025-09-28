@@ -116,10 +116,10 @@ TEAM_RECORD_ADJUSTMENTS = {
 "Astros": (-1, 0),
 "Rays": (0,-4),
 "Padres": (-1,0),
-    "Guardians": (-1,0)
-    "Giants": (0,-1)
+    "Guardians": (-1,0),
+    "Giants": (0,-1),
     "Yankees": (-1,0),
-"Blue Jays": (-1,0)
+"Blue Jays": (-1,0),
 }
 
 # ===== Ajustes manuales de PUNTOS (desconexiones, sanciones, bonificaciones) =====
@@ -482,6 +482,7 @@ def games_played_today_scl():
 
 
 # ====== FIN DEL BLOQUE ======
+
 
 
 
